@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'de.mannodermaus.android-junit5'
 }
 
 android {
@@ -88,6 +89,13 @@ dependencies {
     implementation "com.github.moxy-community:moxy-androidx:$moxy"
     implementation "com.github.moxy-community:moxy-ktx:$moxy"
     kapt "com.github.moxy-community:moxy-compiler:$moxy"
+
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0"
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.8.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+    testImplementation 'io.mockk:mockk:1.12.3'
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit5:1.6.10"
 }
 
 detekt {

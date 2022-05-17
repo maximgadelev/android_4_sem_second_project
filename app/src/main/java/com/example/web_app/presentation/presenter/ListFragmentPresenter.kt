@@ -41,7 +41,7 @@ class ListFragmentPresenter @Inject constructor(
                 viewState.hideLoading()
             }
             .subscribeBy(onSuccess = {
-                viewState.showList(it.slice(0..8))
+                viewState.showList(it)
             }, onError = { error ->
                 viewState.showError(error)
             })
