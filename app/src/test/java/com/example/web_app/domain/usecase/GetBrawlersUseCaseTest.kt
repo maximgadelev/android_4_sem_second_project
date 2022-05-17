@@ -9,6 +9,7 @@ import io.mockk.mockk
 import io.reactivex.rxjava3.core.Single
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -42,6 +43,24 @@ internal class GetBrawlersUseCaseTest {
         assertEquals(
            1600000,
             result.blockingGet()[0].id
+        )
+    }
+    @Test
+    @DisplayName("Then request brawlers, we awaiting error")
+    fun invokeTestException() {
+        // arrange
+        val mockError = mockk<Throwable>()
+        every {
+            repository.getBrawlers()
+        } returns Single.error(mockError)
+
+        // act
+        val result = useCase.invoke()
+
+        // assert
+        assertEquals(
+            mockError,
+            result.blockingGet()
         )
     }
 }
