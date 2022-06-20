@@ -11,7 +11,7 @@ android {
         viewBinding true
     }
     defaultConfig {
-        applicationId "android_4_sem_second_project"
+        applicationId "com.example.web_app"
         minSdk 23
         targetSdk 31
         versionCode 1
@@ -20,9 +20,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildFeatures {
-        viewBinding true
-    }
 
     buildTypes {
         release {
@@ -84,6 +81,13 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxjava:3.1.4"
     implementation 'io.reactivex.rxjava3:rxkotlin:3.0.1'
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+
+    // region moxy
+    def moxy = "2.2.2"
+    implementation "com.github.moxy-community:moxy:$moxy"
+    implementation "com.github.moxy-community:moxy-androidx:$moxy"
+    implementation "com.github.moxy-community:moxy-ktx:$moxy"
+    kapt "com.github.moxy-community:moxy-compiler:$moxy"
 }
 
 detekt {
